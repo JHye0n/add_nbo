@@ -4,7 +4,7 @@
 #include <netinet/in.h>
 
 uint32_t gilgil(uint32_t n){
-	return (n&0xFF000000)>>24|(n &0x00FF0000)>>8|(n&0x0000FF00)<<8|(n & 0x000000FF)<<24;
+	return (n & 0xFF000000)>>24|(n &0x00FF0000)>>8|(n&0x0000FF00)<<8|(n&0x000000FF)<<24;
 }
 
 int main(int argc, char *argv[]){
@@ -12,6 +12,9 @@ int main(int argc, char *argv[]){
 	uint32_t buf, buf2, sum;
 
 	if(argc < 2){
+		printf("argument error %s <file1><file2>\n",argv[0]);
+		return 0;
+	}else if(argc > 3){
 		printf("argument error %s <file1><file2>\n",argv[0]);
 		return 0;
 	}
