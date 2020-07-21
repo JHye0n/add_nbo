@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <netinet/in.h>
 
+//network byte order, uint32_t
 uint32_t gilgil(uint32_t n){
 	return (n&0xFF000000) >> 24| (n&0x00FF0000) >> 8
 	| (n&0x0000FF00) << 8| (n&0x000000FF) << 24;
@@ -38,7 +39,7 @@ int main(int argc, char *argv[]){
 	buf2 = gilgil(buf2); // uint32_t gilgil function call
 	sum = buf+buf2;
 
-	printf("%d(0x%x) + %d(0x%x) = %d(0x%x)\n",buf,buf,buf2,buf2,sum,sum);
+	printf("%d(0x%02x) + %d(0x%02x) = %d(0x%02x)\n",buf,buf,buf2,buf2,sum,sum);
 	
 	return 0;
 }
